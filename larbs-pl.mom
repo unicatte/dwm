@@ -1,0 +1,365 @@
+.de LI
+.LIST
+.SHIFT_LIST 10p
+..
+.PARA_SPACE 1m
+.TITLE "\s+(10Przyjazny przewodnik po LARBS!\s0"
+.AUTHOR "\s+5Luke Smith\s0" "\s+3tł. unicatte\s0"
+.DOCTYPE    DEFAULT
+.COPYSTYLE  FINAL
+.PRINTSTYLE TYPESET
+.PT_SIZE 12
+.HEADER_LEFT_SIZE -4
+.HEADER_RIGHT_SIZE -4
+.FOOTNOTE_AUTOLEAD 10
+.hy 0
+.START
+Należy używać klawiszy vima (\f(CWh/j/k/l\fP) do nawigacji po tym dokumencie.
+Przyciśnięcie \f(CWs\fP rozciągnie dokument do szerokości okna (\f(CWa\fP aby to odwrócić).
+\f(CWK\fP i \f(CWJ\fP aby zbliżyć lub oddalić.
+\f(CWSuper+f\fP aby przełączyć pełny ekran.
+\f(CWq\fP aby wyjść.
+(To są najbardziej istotne przypisania klawiszy w programie \fBzathura\fP, czytniku pdf.)
+.LI
+.ITEM
+\f(CWMod+F1\fP pokaże ten dokument w dowolnym momencie.
+.ITEM
+Przez \f(CWMod\fP mam na myśli przycisk Super, zazwyczaj znany jako "przycisk Windows."
+.LIST OFF
+.PP
+FAQ znajduje się na końcu tego dokumentu.
+.HEADING 1 "Witajcie!"
+.HEADING 2 "Podstawowe cele tego systemu:"
+.LI
+.ITEM
+\fBNaturalność\fP \(en
+Usunięcie granicy między umysłem i materią:
+wszystko co istotne powinno znajdować się od Was o jak najmniejszą liczbę przyciśnięć klawiszy
+i nie powinniście być zmuszeni do myślenia o tym co robicie.
+Immersja.
+.ITEM
+\fBEkonomia\fP \(en
+Programy powinny być proste i lekkie pod względem użycia zasobów systemu i wszechstronnie rozszerzalne.
+Z tego powodu wiele programów, które mają w sobie całą magię, pracuje w terminalu lub są one oparte na ncurses.
+.ITEM
+\fBCentralność klawiatury/vima\fP \(en
+Wszystkie programy w terminalu (i inne programy) używają klawiszy vima kiedy możliwe.
+Wasze dłonie nigdy nie muszą opuszczać rzędu podstawowego i okolic.
+.ITEM
+\fBDecentralizacja\fP \(en
+Ten system jest siecią niewielkich, modyfikowalnych i zastępowalnych programów, które użytkownicy mogą łatwo dopasować.
+.LIST OFF
+.HEADING 2 "Ogólne zmiany klawiatury"
+.LI
+.ITEM
+Capslock jest bezużytecznym przyciskiem w bardziej poważnym środowisku pracy.
+Jego funkcja została zmieniona.
+Przyciśnięcie jego samego służy jako sekwencja ucieczki (escape), co czyni pracę w vimie o wiele bardziej naturalną,
+ale możliwe jest także przytrzymanie przycisku i będzie on wtedy służył jako alternatywny przycisk Windows/super/mod.
+.ITEM
+Przycisk menu (zazwyczaj pomiędzy prawym Altem i Ctrlem) jest alternatywnym przyciskiem Super/Mod.
+Służy to do ułatwienia pracy jedną ręką.
+.LIST OFF
+.PP
+W celu zmiany którejkolwiek z tych zmian klawiatury wystarczy otworzyć i zmodyfikować skrypt \f(CWremaps\fP.
+Wszystkie skrypty dostarczane z LARBS znajdują się w \f(CW~/.local/bin/\fP.
+Właściwie, nie powinno to ulegać wątpliwościom, ale \fIwszystko\fP tutaj można łatwo zmienić.
+Poniżej w tym dokumencie znajdują się informacje o tym gdzie zmieniać programy/komponenty.
+.PP
+Dodatkowo, choć nie jest to częścią środowiska pulpitu, domyślny tryb edycji w powłoce używa powiązań klawiszy programu vi.
+Jeśli chcecie dowiedzieć się więcej o tym, wciśnijcie \f(CWMod+F2\fP i wpiszcie i wybierzcie opcję "vi mode in shell"
+(poradnik po angielsku).
+To ustawienie może być zmienione, jeśli nie podoba się wam, poprzez usunięcie lub odkomentowanie zawartości \f(CW~/.config/inputrc\fP. 
+.HEADING 2 "Pasek statusu"
+.PP
+Po lewej zobaczycie cyfry reprezentujące wasze obecne przestrzenie robocze/tagi.
+Po prawej zobaczycie różne kontrolki statusu systemu, datę, poziom głośności, nawet muzykę i lokalną pogodę jeśli możliwe itp.
+Każdy moduł po prawej na pasku statusu jest skryptem umiejscowionym w \f(CW~/.local/bin/statusbar/\fP.
+Tam możecie zobaczyć co robią i je zmodyfikować.
+Na pewno sobie z tym poradzicie.
+Możecie także kliknąć prawym przyciskiem na moduł aby zobaczyć co robi.
+.PP
+To program dwmblocks jest uruchamiany w celu wygenerowania paska statusu z tych skryptów.
+Możecie zmienić jego konfigurację lub kod źródłowy w \f(CW~/.local/src/dwmblocks/\fP aby wskazać mu jakie skrypty/komendy chcecie by wyświetlał.
+.HEADING 2 "Bardziej szczegółowe poradniki"
+.PP
+Wciśnijcie \f(CWmod+F2\fP w dowolnym momencie aby otrzymać menu programów o których dostępne są filmy, odgrywane prosto z YouTube.
+Filmy są w języku angielskim.
+Możecie także przejrzeć pliki konfiguracji programów, które opisują wiele specyficznych powiązań.
+.HEADING 1 "Powiązania klawiszy"
+.PP
+Menedżer okien abstrakcyjnie kolejkuje wszystkie Wasze okna w stos od najbardziej ważnego do najmniej ważnego, w zależności od tego kiedy ostatnio wprowadzaliście na nim zmiany.
+dwm jest łatwym w użyciu menedżerem okien ale musicie zrozumieć że używa on zarządcy układu opartego na stosie.
+Jeśli nie jesteście zaznajomieni, polecam wcisnąć \f(CWMod+F2\fP i wybrać opcję "dwm" aby zobaczyć mój krótki poradnik (zwróćcie uwagę, że powiązania klawiszy które omawiane są na filmie są domyślnymi powiązaniami dwm, które są inne (gorsze) od tych tutaj).
+.PP
+Zwróćcie uwagę na wielkość liter w skrótach klawiaturowych\c
+.FOOTNOTE
+Aby pisać dużymi literami, przytrzymajcie przycisk \f(CWShift\fP\(emmówienie o tym może wydawać się oczywistą i protekcjonalną rzeczą, ale dosłownie było wielu ludzi (Boomerów), którzy wysyłali mi emaile, pytając mnie jak wpisać dużą literę kiedy caps lock nie jest dostępny.
+.FOOTNOTE OFF
+ , wypróbujcie je w praktyce. Bądźcie otwarci na stosowanie podstawowych komend i system stanie się dla was naturalny.
+.LI
+.ITEM
+\f(CWMod+Enter\fP \(en Otwórz okno terminalu (domyślnym terminalem jest \f(CWst\fP; uruchomcie \f(CWman st\fP aby dowiedzieć się więcej.)
+.ITEM
+\f(CWMod+q\fP \(en Zamknij okno
+.ITEM
+\f(CWMod+d\fP \(en dmenu (Aby uruchamiać komendy lub programy bez skrótów)
+.ITEM
+\f(CWMod+j/k\fP \(en Przełączaj między oknami po kolei w kolejce stosu
+.ITEM
+\f(CWMod+Spacja\fP \(en Ustaw wybrane okno jako domyślne (lub przełącz domyślne z drugim)
+.ITEM
+\f(CWMod+h/l\fP \(en Zmień szerokość głównego okna
+.ITEM
+\f(CWMod+z/x\fP \(en Zwiększ/zmniejsz odstęp (można także przytrzymać \f(CWMod\fP i przewijać kółkiem myszy)
+.ITEM
+\f(CWMod+a\fP \(en Przełącz odstępy
+.ITEM
+\f(CWMod+A\fP \(en Odstępy powracają do domyślnych wartości (można także przytrzymać \f(CWMod\fP i kliknąć środkowy przycisk myszy)
+.ITEM
+\f(CWMod+Shift+Spacja\fP \(en Zmień okno w pływające (przenieś i zmień rozmiar używając \f(CWMod+\fPlewy/prawy przycisk myszy).
+.ITEM
+\f(CWMod+s\fP \(en Ustaw okno jako "przyklejone" (podąża za Wami od tagu do tagu) lub to odwróć
+.ITEM
+\f(CWMod+b\fP \(en Przełącz pasek statusu (można także wcisnąć środkowy przycisk myszy na pulpicie)
+.ITEM
+\f(CWMod+v\fP \(en Przeskocz do głównego okna
+.LIST OFF
+.HEADING 2 "Zarządcy układu okien"
+.LI
+.ITEM
+\f(CWMod+t\fP \(en Tryb kafelkowy (aktywny domyślnie)
+.ITEM
+\f(CWMod+T\fP \(en Tryb stosu u dołu (taki jak kafelkowy, tylko główne okno jest u góry)
+.ITEM
+\f(CWMod+f\fP \(en Tryb pełnoekranowy
+.ITEM
+\f(CWMod+F\fP \(en Tryb pływający (AKA tryb normie)
+.ITEM
+\f(CWMod+y\fP \(en Tryb spirali Fibbonacciego
+.ITEM
+\f(CWMod+Y\fP \(en Tryb malejący (podobny do Fibonacciego)
+.ITEM
+\f(CWMod+u\fP \(en Głowne okno po lewej, pozostałe okna w trybie monoklu
+.ITEM
+\f(CWMod+U\fP \(en Tryb monoklu (wszystkie okna zajmują cały ekran i przełączają się)
+.ITEM
+\f(CWMod+i\fP \(en Wycentruj główne okno
+.ITEM
+\f(CWMod+I\fP \(en Wycentruj główne okno i zmień je w pływające
+.ITEM
+\f(CWMod+o/O\fP \(en Zmniejsz/zwiększ liczbę głownych okien
+.LIST OFF
+.HEADING 2 "Podstawowe programy"
+.LI
+.ITEM
+\f(CWMod+r\fP \(en lf (przeglądarka/menedżer plików)
+.ITEM
+\f(CWMod+R\fP \(en htop (menedżer zadań, monitor systemu, którego R*dditorzy używają do szpanowania)
+.ITEM
+\f(CWMod+e\fP \(en neomutt (email) \(en Musi zostać najpierw skonfigurowany poprzez uruchomienie \f(CWmw add\fP.
+.ITEM
+\f(CWMod+E\fP \(en abook (kontakty, książka adresowa, emaile)
+.ITEM
+\f(CWMod+m\fP \(en ncmpcpp (odtwarzacz muzyczny)
+.ITEM
+\f(CWMod+w\fP \(en Przeglądarka internetowa (domyślnie Brave)
+.ITEM
+\f(CWMod+W\fP \(en nmtui (do połączenia z bezprzewodowym punktem dostępu)
+.ITEM
+\f(CWMod+n\fP \(en vimwiki (dla instrukcji)
+.ITEM
+\f(CWMod+N\fP \(en newsboat (czytnik RSS)
+.ITEM
+\f(CWMod+F4\fP \(en pulsemixer (kontrola nad systemem audio)
+.ITEM
+\f(CWMod+Shift+Enter\fP \(en Pokaż/ukryj terminal rozwijany u góry
+.ITEM
+\f(CWMod+'\fP \(en Pokaż/ukryj kalkulator rozwijany u góry
+.ITEM
+\f(CWMod+D\fP \(en passmenu (menedżer haseł)
+.LIST OFF
+.HEADING 2 "System"
+.LI
+.ITEM
+\f(CWMod+BackSpace\fP \(enWybierz aby zablokować ekran, wylogować, wyłączyć, uruchomić ponownie itp.
+.ITEM
+\f(CWMod+F1\fP \(en Pokaż ten dokument
+.ITEM
+\f(CWMod+F2\fP \(en Oglądaj filmy poradnikowe na wybrany temat
+.ITEM
+\f(CWMod+F3\fP \(en Wybierz ekran do użytku
+.ITEM
+\f(CWMod+F4\fP \(en pulsemixer (kontrola nad audio)
+.ITEM
+\f(CWMod+F6\fP \(en Klient torrent Transmission (nie zainstalowany domyślnie)
+.ITEM
+\f(CWMod+F7\fP \(en Włącz/wyłącz klient transmission przez dmenu
+.ITEM
+\f(CWMod+F8\fP \(en Sprawdź mail, jeśli mutt-wizard jest skonfigurowany. (Uruchom \f(CWmw add\fP aby ustawić.)
+.ITEM
+\f(CWMod+F9\fP \(en Zamontuj nośnik USB/dysk twardy lub urządzenie Android
+.ITEM
+\f(CWMod+F10\fP \(en Wymontuj nie-niezbędny dysk lub urządzenie Android
+.ITEM
+\f(CWMod+F11\fP \(en Wyświetl kamerę
+.ITEM
+\f(CWMod+F12\fP \(en Uruchom ponownie skrypty mapowania klawiatury jeśli nowa klawiatura została podłączona
+.ITEM
+\f(CWMod+`\fP \(en Wybierz emoji do skopiowania do schowka
+.ITEM
+\f(CWMod+Insert\fP \(en Pokaż zawartość schowka/głównego zaznaczenia
+.LIST OFF
+.HEADING 2 "Audio"
+.PP
+Używam ncmpcpp jako odtwarzacza muzyki, który jest frontendem dla mpd.
+.LI
+.ITEM
+\f(CWMod+m\fP \(en ncmpcpp, odtwarzacz muzyki
+.ITEM
+\f(CWMod+.\fP \(en Następny utwór
+.ITEM
+\f(CWMod+,\fP \(en Poprzedni utwór
+.ITEM
+\f(CWMod+<\fP \(en Uruchom utwór ponownie
+.ITEM
+\f(CWMod+>\fP \(en Przełącz zapętlanie playlisty
+.ITEM
+\f(CWMod+p\fP \(en Przełącz pauzę
+.ITEM
+\f(CWMod+p\fP \(en Wymuś pauzę na demonie odtwarzacza muzyki i wszystkich filmach mpv
+.ITEM
+\f(CWMod+M\fP \(en Wycisz całe audio
+.ITEM
+\f(CWMod+-\fP \(en Zmniejsz głośność (przytrzymanie shift zwiększa przeskok)
+.ITEM
+\f(CWMod++\fP \(en Zwiększ głośność (przytrzymanie shift zwiększa przeskok)
+.ITEM
+\f(CWMod+[\fP \(en Do tyłu o 10 sekund (przytrzymanie shift przesuwa o minutę)
+.ITEM
+\f(CWMod+]\fP \(en Do przodu o 10 sekund (przytrzymanie shift przesuwa o minutę)
+.ITEM
+\f(CWMod+F4\fP \(en pulsemixer (ogólna kontrola nad audio/poziomem głośności ujścia/źródła)
+.LIST OFF
+.HEADING 2 "Tagi/Przestrzenie robocze"
+.PP
+Jest dziewięć tagów, aktywne tagi są podświetlone u góry po lewej.
+.LI
+.ITEM
+\f(CWMod+(Numer)\fP \(en Przejdź do tagu pod tym numerem
+.ITEM
+\f(CWMod+Shift+(Numer)\fP \(en Wyślij okno do tego tagu
+.ITEM
+\f(CWMod+Tab\fP \(en Wróć do poprzedniego tagu (można także użyć \f(CW\\\fP zamiast Tab)
+.ITEM
+\f(CWMod+g\fP \(en Przejdź do tagu po lewej (przytrzymaj shift aby wysłać tam okno)
+.ITEM
+\f(CWMod+;\fP \(en Przejdź do tagu po prawej (przytrzymaj shift aby wysłać tam okno)
+.ITEM
+\f(CWMod+Lewo/Prawo\fP \(en Przejdź do innego ekranu
+.ITEM
+\f(CWMod+Shift+Lewo/+Prawo\fP \(en Przenieś okno do innego ekranu
+.LIST OFF
+.HEADING 2 "Nagrywanie"
+.PP
+Używam maim i ffmpeg do tworzenia różnych nagrań pulpitu i audio.
+Wszystkie z tych nagrań będą zapisywane do \f(CW~\fP i nie nadpiszą
+poprzednich nagrań ponieważ ich nazwy są oparte na ich dokładnych czasach.
+.LI
+.ITEM
+\f(CWPrintScreen\fP \(en Zrób zrzut ekranu
+.ITEM
+\f(CWShift+PrintScreen\fP \(en Wybierz obszar do zrzutu ekranu
+.ITEM
+\f(CWMod+PrintScreen\fP \(en Otwórz menu w dmenu aby wybrać rodzaj nagrania audio/video
+.ITEM
+\f(CWMod+Delete\fP \(en Kończy dowolne nagranie rozpoczęte w powyższy sposób.
+.ITEM
+\f(CWMod+Shift+c\fP \(en Przełącza kamerę internetową w prawym dolnym rogu do nagrywania ekranu.
+.ITEM
+\f(CWMod+ScrollLock\fP \(en Przełącz screenkey (jeśli zainstalowany) aby pokazać wciśnięcia przycisków
+.LIST OFF
+.HEADING 2 "Inne przyciski"
+.PP
+Przypisałem dodatkowe przyciski które znajdują się na niektórych klawiaturach (przyciski odtwarzania i pauzy,
+jasności ekranu, emaila, przeglądania WWW itp.) do tego, czego byście się spodziewali.
+.HEADING 1 "Konfiguracja"
+.PP
+Pliki dotfile/ustawień są zlokalizowane w \f(CW~/.config/\fP, zwróćcie uwagę, że pliki dotfile do programów nie zawartych w LARBS także tam są na życzenie użytkowników. Nie koniecznie sprawuję opiekę nad wszystkimi z tych plików ale pozostają one tam jako pliki legacy.
+.PP
+Programy suckless, dwm (menedżer okien), st (terminal) i dmenu wśród innych nie mają tradycyjnych plików konfiguracji, ale mają lokację plików źródłowych w \f(CW~/.local/src/\fP.
+Tam możecie modyfikować ich pliki \f(CWconfig.h\fP, a następnie uruchomić \f(CWsudo make install\fP aby zainstalować ponownie. 
+(Oczywiście będziecie musieli uruchomić program ponownie aby zobaczyć jego efekty.)
+.HEADING 1 "Najczęściej zadawane pytania (FAQ)"
+.HEADING 2 "Moja klawiatura nie działa w oczekiwany sposób!"
+.PP
+Jak wspomniałem powyżej, LARBS wprowadza zmiany klawiatury skryptem \f(CWremaps\fP.
+Te ustawienia mogą nadpisać Wasze preferowane ustawienia, więc powinniście otworzyć ten plik i odkomentować linie sprawiające problemy jeśli takowe macie.
+.HEADING 2 "Moje audio nie działa!"
+.PP
+Przy świeżej instalacji, system audio Linuxa często wycisza wyjścia.
+Możliwa może być też konieczność ustawienia preferowanego domyślnego wyjścia, co możliwe jest z wiersza poleceń lub przez wybór jednego z nich w \f(CWpulsemixer\fPze (\f(CWMod+F4\fP).
+.HEADING 2 "Jak kopiować i wklejać?"
+.PP
+Kopiowanie i wklejanie jest zawsze specyficzne programowi na każdym systemie.
+W większości programów graficznych kopiowanie i wklejanie będzie takie samo jak w Windowsie: \f(CWctrl-c\fP i \f(CWctrl-v\fP.
+W terminalu Linuxa te powiązania mają inne, ważniejsze przeznaczenia, więc możecie uruchomić \f(CWman st\fP aby zobaczyć jak kopiować i wklejać w moim buildzie terminala. 
+.PP
+Dodatkowo, skonfigurowałem vima aby używał schowka jako domyślnego buforu, co oznacza, że jeśli skopiujecie lub usuniecie coś w vimie, to znajdzie się to także w systemowym schowku, więc możecie \f(CWctrl-v\fP to do Waszej instancji przeglądarki itp. Możecie także wklejać zawartość skopiowaną z innych programów do vima typowymi powiązaniami vima.
+.HEADING 2 "Jak zmienić tapetę?"
+.PP
+System zawsze będzie odczytywał plik \f(CW~/.config/wall.png\fP jako tapetę.
+Skrypt \f(CWsetbg\fP, jeśli uruchomiony na obrazku, ustawi go jako trwałą tapetę.
+Używając menedżera plików możecie po prostu najechać na nazwę obrazu i wpisać \f(CWbg\fP i to uruchomi \f(CWsetbg\fP.
+.HEADING 2 "Jak zmienić kompozycję kolorów?"
+.PP
+LARBS nie aktywuje już domyślnie Xresource, ale sprawdźcie \f(CW~/.config/Xresources\fP w celu uzyskania listy kompozycji kolorów które możecie aktywować lub dodajcie własne. Kiedy zapiszecie plik, vim automatycznie zaktualizuje kompozycję. Jeśli chcielibyście aby te kolory były aktywowane domyślnie przy logowaniu, jest linijka w \f(CW~/.config/xprofile\fP, którą możecie odkomentować aby to umożliwić.
+.PP
+Lub, jeśli chcecie używać \f(CWwal\fP do automatycznej generacji kompozycji kolorów na podstawie tapet, po prostu zainstalujcie ten program, a \f(CWsetbg\fP automatycznie wykryje i uruchomi go przy uruchomieniu systemu i zmianie tapety.
+.HEADING 2 "Jak skonfigurować mój email?"
+.PP
+LARBS dostarczany jest z mutt-wizardem, który daje możliwość odbioru i wysyłania emaili i przechowania ich offline, z poziomu terminala bez potrzeby użycia przeglądarki.
+Możecie dodać konta email uruchamiając \f(CWmw add\fP.
+.PP
+Po pomyślnym dodaniu adresu/ów email, możecie otworzyć pocztę z użyciem \f(CWneomutt\fP, który jest także przypisany do \f(CWMod+e\fP.
+Możecie zsynchronizować pocztę wciskając \f(CWMod+F8\fP i możecie utworzyć zadanie cron do synchronizacji poczty raz co kilka minut uruchamiając \f(cwmw cron\fp. 
+.PP
+Możecie także chcieć zainstalować \f(CWpam-gnupg-git\fP, który może być skonfigurowany aby automatycznie odblokowywał klucz GPG przy logowaniu, co pozwoli na uniknięcie potrzeby wprowadzenia hasła do synchronizacji i wysyłania, jednocześnie utrzymując bezpieczeństwo hasła przechowując je zaszyfrowane na Waszej maszynie.
+.HEADING 2 "Jak skonfigurować moją muzykę?"
+.PP
+Domyślnie mpd, demon muzyki, zakłada, że \f(CW~/Music\fP jest Waszym katalogiem przechowującym muzykę.
+To można zmienić w \f(CW~/.config/mpd/mpd.conf\fP.
+Kiedy dodajecie muzykę do folderu z muzyką, możliwa jest konieczność uruchomienia \f(CWmpc up\fP w terminalu w celu aktualizacji bazy danych.
+mpd jest kontrolowane przez ncmpcpp, które jest dostępne przez \f(CWMod+m\fP.
+.HEADING 2 "Jak zaktualizować LARBS?"
+.PP
+LARBS jest instalowane jako repozytorium git w Waszym katalogu domowym.
+Możecie go użyć w ten sposób do pobierania, wyświetlania różnic i wprowadzania zmian ze zdalnego repozytorium.
+Jeśli nie chciecie tego robić lub nie wiecie jak używać gita, możecie właściwie uruchomić skrypt ponownie (jako root) i zainstalować LARBS ponownie i zaktualizuje on automatycznie istniejącą instalację jeśli wybierzecie taką samą nazwę użytkownika.
+To jednak nadpisze oryginalne pliki konfiguracji, wliczając zmiany jakich dokonaliście, ale to jest łatwiejsze podejście na siłę które zainstaluje też nowe zależności.
+.HEADING 1 "Ważne łącza"
+.SILENT
+TRANSLATOR'S NOTE: Hidden until I've found a method of inserting hyperlinks that will be compatible with a compilation method that processes Polish diacritics correctly.
+Ukryte dopóki nie odnajdę metody wstawiania hiperłącz która będzie kompatybilna z metodą kompilacji która przetwarza Polskie znaki diakrytyczne prawidłowo.
+~~
+.PP
+Możecie otwierać łącza z użyciem klawiatury w tym czytniku pdf wciskając \f(CWf\fP, a następnie cyfrę, która pojawia się przy pożądanym łączu.
+.SILENT OFF
+Poniższe linki prowadzą do \fBanglojęzycznych\fP zasobów i kontaktu dotyczących systemu.
+.LI
+.ITEM
+luke@lukesmith.xyz
+\(en Pytania!
+.ITEM
+https://lukesmith.xyz
+\(en Podchody!
+.ITEM
+https://lukesmith.xyz/donate
+\(en Donacje, aby zachęcić do dalszego rozwoju LARBS!
+.ITEM
+https://github.com/LukeSmithxyz, moja strona Github
+\(en Kod, który napędza system!
+.ITEM
+http://lukesmith.xyz/rss.xml
+\(en Aktualności!
+.LIST OFF
