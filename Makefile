@@ -35,8 +35,9 @@ dist: clean
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
-	cp -f dwm ${DESTDIR}${PREFIX}/bin
-	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
+	cp -f dwm dwminit ${DESTDIR}${PREFIX}/bin
+	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm ${DESTDIR}${PREFIX}/bin/dwminit
+
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
@@ -44,9 +45,15 @@ install: all
 	cp -f larbs.mom ${DESTDIR}${PREFIX}/share/dwm
 	chmod 644 ${DESTDIR}${PREFIX}/share/dwm/larbs.mom
 
+	mkdir -p ${DESTDIR}/share/xsessions
+	cp -f dwm.desktop ${DESTDIR}/share/xsessions
+	chmod 755 ${DESTDIR}/share/xsessions/dwm.desktop
+
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
+		${DESTDIR}${PREFIX}/bin/dwminit\
 		${DESTDIR}${PREFIX}/share/dwm/larbs.mom\
-		${DESTDIR}${MANPREFIX}/man1/dwm.1
+		${DESTDIR}${MANPREFIX}/man1/dwm.1\
+		${DESTDIR}/share/xsessions/dwm.desktop
 
 .PHONY: all options clean dist install uninstall
